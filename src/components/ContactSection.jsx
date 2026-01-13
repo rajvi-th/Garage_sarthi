@@ -4,9 +4,9 @@ import Button from "./common/Button";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="px-4 pb-10 lg:pb-20 flex justify-center">
+    <section id="contact" className="px-4 lg:px-15 2xl:px-25 pb-10 lg:pb-20 flex justify-center">
       <div
-        className="relative w-full mx-auto max-w-full lg:max-w-6xl 2xl:max-w-7xl min-h-[420px] rounded-[28px] overflow-hidden flex items-center"
+        className="relative w-full mx-auto max-w-full min-h-[420px] rounded-[28px] overflow-hidden flex items-center"
         style={{
           backgroundImage: `url(${GformBg})`,
           backgroundSize: "cover",

@@ -88,8 +88,8 @@ const DashboardFeatures = () => {
       </section>
 
       {/* Features Section */}
-      <section className="pb-10 lg:pb-20 px-4 bg-white">
-        <div className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-7xl">
+      <section className="pb-10 lg:pb-20 px-4 lg:px-15 2xl:px-25 bg-white">
+        <div className="mx-auto max-w-full ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {features.map((feature, index) => (
               <div

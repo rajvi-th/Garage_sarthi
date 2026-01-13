@@ -6,7 +6,7 @@ import Button from "./Button";
 
 const Footer = () => {
   return (
-    <footer className="relative mt- px-4 pb-6 bg-white overflow-hidden">
+    <footer className="relative mt- px-4 lg:px-15 2xl:px-25 pb-6 bg-white overflow-hidden">
       {/* Bottom Left Shadow */}
       <div
         className="absolute -bottom-56 -left-56 w-[420px] h-[420px] rounded-full z-0"
@@ -28,18 +28,18 @@ const Footer = () => {
       />
 
       {/* Content */}
-      <div className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-7xl relative z-10">
+      <div className="mx-auto max-w-full  relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-6">
           {/* Logo and About */}
           <div className="max-w-md space-y-2">
             <img src={GLogo} alt="GarageSaarthi" className="h-10" />
 
-            <p className="text-[#575757] text-sm font-medium leading-relaxed">
+            <p className="text-[#575757] text-xs font-medium leading-relaxed">
               Simplify your garage operations with smart automation, from job
               cards and billing to parts, customers, and team tracking.
             </p>
 
-            <p className="text-sm font-medium">
+            <p className="text-xs font-medium">
               Product By{" "}
               <span className="text-[#B02E0C] font-bold">TechifyHouse</span>
             </p>
@@ -90,16 +90,16 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="pt-6 border-t border-gray-200/60 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm">
+          <p className="text-[10px] 2xl:text-sm">
             © {new Date().getFullYear()} GarageSaarthi. All rights reserved by{" "}
             <span className="text-[#B02E0C] font-medium">Techifyhouse.</span>
           </p>
 
           <div className="flex items-center gap-8">
-            <a href="#" className="text-sm hover:text-primary transition-colors">
+            <a href="#" className="text-xs hover:text-primary transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm hover:text-primary transition-colors">
+            <a href="#" className="text-xs hover:text-primary transition-colors">
               Terms of Service
             </a>
           </div>
