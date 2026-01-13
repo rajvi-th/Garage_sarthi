@@ -1,0 +1,24 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary-hover:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.text-text-dark {
+  color: var(--color-text-dark);
+}
+
+.text-text-muted {
+  color: var(--color-text-muted);
+}
