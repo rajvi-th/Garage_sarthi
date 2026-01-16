@@ -12,8 +12,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 px-4">
-      <nav className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-7xl bg-white rounded-full border border-gray-100 px-4 py-3 flex items-center justify-between">
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 2xl:px-25">
+      <nav className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-full bg-white rounded-full border border-gray-100 px-4 py-3 flex items-center justify-between">
 
         {/* ================= MOBILE / TABLET ================= */}
         <div className="flex items-center justify-between w-full md:hidden">
@@ -41,7 +41,7 @@ const Header = () => {
           
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src={GLogo} alt="GarageSaarthi" className="h-8" />
+            <img src={GLogo} alt="GarageSaarthi" className="h-8 2xl:h-10" />
           </div>
 
           {/* Nav Links */}
