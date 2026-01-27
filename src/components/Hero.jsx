@@ -5,7 +5,7 @@ import DashboardImg from "../assets/icons/Gvector.svg";
 
 const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden">
+    <section id="home" className="relative w-full overflow-hidden">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -31,7 +31,11 @@ const Hero = () => {
 
           <div className="flex flex-row max-[380px]:flex-col justify-center gap-4">
 
-            <Button variant="hero" className="ring-4 ring-white/10 !px-8 !py-2 text-lg">
+            <Button 
+              variant="hero" 
+              className="ring-4 ring-white/10 !px-8 !py-2 text-lg"
+              onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
+            >
               Get Started
               <svg
                 className="w-5 h-5 ml-2"

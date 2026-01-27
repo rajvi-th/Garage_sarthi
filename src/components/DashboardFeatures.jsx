@@ -66,7 +66,14 @@ const DashboardFeatures = () => {
               customers, and staff - all in one place.
             </p>
             <div className="flex justify-center">
-              <Button variant="hero" className="cursor-pointer">
+              <Button 
+                variant="hero" 
+                className="cursor-pointer"
+                onClick={() => {
+                  const showcaseSection = document.getElementById('showcase');
+                  if (showcaseSection) showcaseSection.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Explore Now
                 <svg
                   className="w-5 h-5"

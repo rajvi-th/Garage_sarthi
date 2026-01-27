@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import GformBg from "../assets/icons/Gform.svg";
+import BookDemoIcon from "../assets/icons/Bookd.png";
 import Button from "./common/Button";
 
 const ContactSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleBookDemo = (e) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
   return (
     <section id="contact" className="px-4 lg:px-15 2xl:px-25 pb-10 lg:pb-20 flex justify-center">
       <div
@@ -36,7 +45,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Form */}
-          <div className="w-full lg:max-w-[380px]">
+          <form onSubmit={handleBookDemo} className="w-full lg:max-w-[380px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="text-white text-xs mb-1 block">
@@ -44,6 +53,7 @@ const ContactSection = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   placeholder="Full name"
                   className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
                 />
@@ -53,6 +63,9 @@ const ContactSection = () => {
                 <label className="text-white text-xs mb-1 block">Email</label>
                 <input
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email address"
                   className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
                 />
@@ -65,6 +78,7 @@ const ContactSection = () => {
               </label>
               <input
                 type="text"
+                required
                 placeholder="Garage name"
                 className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
               />
@@ -76,6 +90,7 @@ const ContactSection = () => {
               </label>
               <textarea
                 rows="3"
+                required
                 placeholder="Write your message"
                 className="w-full rounded-2xl px-4 py-3 text-sm bg-white outline-none resize-none"
               />
@@ -83,12 +98,9 @@ const ContactSection = () => {
 
             <div className="relative flex justify-center sm:justify-end pb-6">
               <Button
+                type="submit"
                 variant="hero"
-                className="
-    w-full sm:w-auto
-    
-    justify-center
-  "
+                className="w-full sm:w-auto justify-center"
               >
                 Book Demo
                 <svg
@@ -106,11 +118,55 @@ const ContactSection = () => {
                 </svg>
               </Button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 ">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          />
+          
+          {/* Modal Content */}
+          <div className="relative bg-white rounded-3xl w-full max-w-full md:max-w-3xl 2xl:max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl animate-in fade-in zoom-in duration-300">
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#EFE9E7] hover:bg-[#f3e6e1] transition-colors z-20 cursor-pointer"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="py-12 md:py-10 2xl:py-15 px-8 flex flex-col items-center text-center">
+              {/* Image */}
+              <div className="w-full flex justify-center pb-5 2xl:pb-8">
+                <img 
+                  src={BookDemoIcon} 
+                  alt="Booking Success" 
+                  className="block w-full max-w-md" 
+                />
+              </div>
+
+              {/* Text */}
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-4">
+                Your demo is successfully booked
+              </h3>
+              <p className="text-gray-600 text-sm md:text-md 2xl:text-xl max-w-xl 2xl:max-w-2xl leading-relaxed">
+                You will receive a response regarding your GarageSaarthi registration demo at your registered email address <span className="font-bold text-[#0F172A]">{email || "demo56@gmail.com"}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
 export default ContactSection;
+

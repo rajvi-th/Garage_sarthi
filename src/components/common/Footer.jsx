@@ -3,30 +3,29 @@ import GLogo from "../../assets/icons/Glogo.svg";
 import CallIcon from "../../assets/icons/Call.svg";
 import EmailIcon from "../../assets/icons/Email.svg";
 import Button from "./Button";
+import BgVector1 from "../../assets/icons/Bgvector-1.svg";
+import BgVector2 from "../../assets/icons/Bgvector-2.svg";
 
 const Footer = () => {
   return (
-    <footer className="relative mt- px-4 lg:px-15 2xl:px-25 pb-6 bg-white overflow-hidden">
-      {/* Bottom Left Shadow */}
-      <div
-        className="absolute -bottom-56 -left-56 w-[420px] h-[420px] rounded-full z-0"
-        style={{
-          background: "#CEBBB5",
-          filter: "blur(271px)",
-          opacity: 0.55,
-        }}
+    <footer className="relative px-4 lg:px-15 2xl:px-25 py-6 bg-white overflow-hidden">
+      {/* Bottom Left Shadow Vector */}
+      <img
+        src={BgVector1}
+        alt=""
+        className="pointer-events-none select-none absolute -bottom-20 -left-20 w-[700px] max-w-none opacity-80 z-0"
       />
 
-      {/* Bottom Right Shadow */}
-      <div
-        className="absolute -bottom-56 -right-56 w-[420px] h-[420px] rounded-full z-0"
-        style={{
-          background: "#CEBBB5",
-          filter: "blur(271px)",
-          opacity: 0.55,
-        }}
+      {/* Bottom Right Shadow Vector */}
+      <img
+        src={BgVector2}
+        alt=""
+        className="pointer-events-none select-none absolute -bottom-20 -right-20 w-[700px] max-w-none opacity-80 z-0"
       />
 
+      <div
+        className="absolute inset-0 pointer-events-none z-[1] bg-gradient-to-b from-white via-white/80 to-transparent"
+      />
       {/* Content */}
       <div className="mx-auto max-w-full  relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-6">
@@ -62,6 +61,12 @@ const Footer = () => {
                     />
                   </svg>
                 }
+                onClick={() =>
+                  window.open(
+                    "https://platform.garagesaarthi.com/login",
+                    "_blank",
+                  )
+                }
               >
                 Access Platform
               </Button>
@@ -70,11 +75,12 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="flex flex-col gap-4 md:mt-10">
-            <a
-              href="tel:+919737321120"
-              className="flex items-center gap-2"
-            >
-              <img src={CallIcon} alt="Call" className="w-4 h-4 -translate-y-px" />
+            <a href="tel:+919737321120" className="flex items-center gap-2">
+              <img
+                src={CallIcon}
+                alt="Call"
+                className="w-4 h-4 -translate-y-px"
+              />
               <span className="font-medium">+91 9737321120</span>
             </a>
 
@@ -96,10 +102,16 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-8">
-            <a href="#" className="text-xs hover:text-primary transition-colors">
+            <a
+              href="#"
+              className="text-xs hover:text-primary transition-colors"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="text-xs hover:text-primary transition-colors">
+            <a
+              href="#"
+              className="text-xs hover:text-primary transition-colors"
+            >
               Terms of Service
             </a>
           </div>

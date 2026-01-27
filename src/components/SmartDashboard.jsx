@@ -32,7 +32,14 @@ const SmartDashboard = () => {
         </p>
 
         <div className="flex justify-center mb-6">
-          <Button variant="hero" className="!px-8">
+          <Button 
+            variant="hero" 
+            className="!px-8"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             Book a Free Demo
             <svg
                   className="w-5 h-5"
