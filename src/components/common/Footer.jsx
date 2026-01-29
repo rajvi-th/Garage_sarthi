@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import GLogo from "../../assets/icons/Glogo.svg";
 import CallIcon from "../../assets/icons/Call.svg";
 import EmailIcon from "../../assets/icons/Email.svg";
@@ -61,12 +62,12 @@ const Footer = () => {
                     />
                   </svg>
                 }
-                onClick={() =>
-                  window.open(
-                    "https://platform.garagesaarthi.com/login",
-                    "_blank",
-                  )
-                }
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Access Platform
               </Button>
@@ -102,18 +103,18 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-8">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="text-xs hover:text-primary transition-colors"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terms-and-conditions"
               className="text-xs hover:text-primary transition-colors"
             >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Button from './Button';
 import GLogo from '../../assets/icons/Glogo.svg';
 
 const Header = () => {
-  const [active, setActive] = useState('Features');
+  const [active, setActive] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
     { name: 'Features', href: '#features' },
@@ -11,18 +14,58 @@ const Header = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+  // Clear active state when not on home page
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActive('');
+    }
+  }, [location.pathname]);
+
+  const scrollToSection = (sectionId, linkName) => {
+    // If we're on the home page, just scroll
+    if (location.pathname === '/') {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        setActive(linkName);
+      }
+    } else {
+      // If we're on another page, navigate to home first
+      navigate('/');
+      // Wait for navigation and DOM update, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+          setActive(linkName);
+        }
+      }, 100);
     }
   };
 
+  const handleNavClick = (e, link) => {
+    e.preventDefault();
+    const sectionId = link.href.replace('#', '');
+    scrollToSection(sectionId, link.name);
+  };
+
+  const scrollToContact = () => {
+    scrollToSection('contact', 'Contact');
+  };
+
   const scrollToHome = () => {
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/') {
+      // If already on home page, just scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Navigate to home page
+      navigate('/');
+      // Scroll to top after navigation
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     }
+    setActive(''); // Clear active state when clicking logo
   };
 
   return (
@@ -49,7 +92,7 @@ const Header = () => {
 
           {/* Login */}
           <button 
-            onClick={scrollToContact}
+            onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
             className="border border-black rounded-full px-4 py-1.5 text-sm font-medium"
           >
             Login
@@ -75,7 +118,7 @@ const Header = () => {
                 <li key={link.name} className="relative">
                   <a
                     href={link.href}
-                    onClick={() => setActive(link.name)}
+                    onClick={(e) => handleNavClick(e, link)}
                     className="text-md font-medium pb-2"
                   >
                     {link.name}
@@ -98,7 +141,7 @@ const Header = () => {
           {/* Buttons */}
           <div className="flex items-center gap-3">
             <button 
-              onClick={scrollToContact}
+              onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
               className="text-sm font-medium border rounded-full px-4 py-2 cursor-pointer"
             >
               Login
@@ -106,7 +149,7 @@ const Header = () => {
             <Button 
               variant="hero" 
               className="!px-4 !py-2 "
-              onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
+              onClick={scrollToContact}
             >
               Get Started
               <svg

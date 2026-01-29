@@ -1,26 +1,18 @@
 import React from 'react';
-import Header from './components/common/Header';
-import Hero from './components/Hero';
-import DashboardFeatures from './components/DashboardFeatures';
-import SmartDashboard from './components/SmartDashboard';
-import IndustrialBenefits from './components/IndustrialBenefits';
-import ContactSection from './components/ContactSection';
-import Footer from './components/common/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <DashboardFeatures />
-        <SmartDashboard />
-        <IndustrialBenefits />
-        <ContactSection />
-      </main>
-      
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      </Routes>
+    </Router>
   );
 }
 

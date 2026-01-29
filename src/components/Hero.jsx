@@ -34,7 +34,12 @@ const Hero = () => {
             <Button 
               variant="hero" 
               className="ring-4 ring-white/10 !px-8 !py-2 text-lg"
-              onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               Get Started
               <svg
