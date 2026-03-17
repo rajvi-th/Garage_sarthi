@@ -37,7 +37,7 @@ const ScrollToTop = () => {
           aria-label="Scroll to top"
         >
           <svg
-            className="w-6 h-6 transform transition-transform group-hover:-translate-y-1"
+            className="w-6 h-6 transform transition-transform "
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
