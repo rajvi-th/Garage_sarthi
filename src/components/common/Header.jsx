@@ -5,10 +5,12 @@ import GLogo from '../../assets/icons/Glogo.svg';
 
 const Header = () => {
   const [active, setActive] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const navLinks = [
+    { name: 'Home', href: '#home', isHome: true },
     { name: 'Features', href: '#features' },
     { name: 'Showcase', href: '#showcase' },
     { name: 'Contact', href: '#contact' },
@@ -26,23 +28,33 @@ const Header = () => {
     
     // If we're on the home page, just scroll
     if (location.pathname === '/') {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-        setActive(linkName);
+      if (sectionId === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       }
+      setActive(linkName);
+      setIsMenuOpen(false); // Close menu after clicking
     } else {
       // If we're on another page, navigate to home first
       navigate('/');
       // Wait for navigation and DOM update, then scroll
       setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-          setActive(linkName);
+        if (sectionId === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
         }
+        setActive(linkName);
+        setIsMenuOpen(false); // Close menu after clicking
       }, 100);
     }
   };
@@ -58,122 +70,177 @@ const Header = () => {
   };
 
   const scrollToHome = () => {
-    if (location.pathname === '/') {
-      // If already on home page, just scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      // Navigate to home page
-      navigate('/');
-      // Scroll to top after navigation
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
-    }
+    scrollToSection('home', 'Home');
     setActive(''); // Clear active state when clicking logo
   };
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 2xl:px-50">
-      <nav className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-full bg-white/80 backdrop-blur-md rounded-full border border-white/20 px-4 py-3 flex items-center justify-between shadow-lg">
-
-        {/* ================= MOBILE / TABLET ================= */}
-        <div className="flex items-center justify-between w-full md:hidden">
+      <div className="relative mx-auto max-w-full lg:max-w-6xl 2xl:max-w-full">
+        <nav className="bg-white/80 backdrop-blur-md rounded-full border border-white/20 px-4 py-3 flex items-center justify-between shadow-lg transition-all duration-300 overflow-hidden relative z-10">
           
-          {/* Hamburger */}
-          <button className="p-2">
-            <span className="block w-6 h-[2px] bg-black mb-1 rounded"></span>
-            <span className="block w-6 h-[2px] bg-black mb-1 rounded"></span>
-            <span className="block w-6 h-[2px] bg-black rounded"></span>
-          </button>
+          {/* ================= MOBILE / TABLET ================= */}
+          <div className="flex items-center justify-between w-full md:hidden">
+            
+            {/* Hamburger / Close Icon */}
+            <button 
+              className="p-2 w-10 flex items-center justify-center cursor-pointer"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <div className="space-y-1.5">
+                  <span className="block w-[21px] h-[2px] bg-black rounded"></span>
+                  <span className="block w-[21px] h-[2px] bg-black rounded"></span>
+                  <span className="block w-[21px] h-[2px] bg-black rounded"></span>
+                </div>
+              )}
+            </button>
 
-          {/* Logo Center */}
-          <div 
-            className="flex items-center gap-2 cursor-pointer" 
-            onClick={scrollToHome}
-          >
-            <img src={GLogo} alt="GarageSaarthi" className="h-8" />
+            {/* Logo Center */}
+            <div 
+              className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-105" 
+              onClick={scrollToHome}
+            >
+              <img src={GLogo} alt="GarageSaarthi" className="h-8" />
+            </div>
+
+            {/* Login Button */}
+            <div className="w-20 flex justify-end">
+              <button 
+                onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
+                className="border border-black rounded-full px-4 py-1.5 text-xs font-semibold hover:bg-black hover:text-white transition-colors"
+              >
+                Login
+              </button>
+            </div>
           </div>
 
-          {/* Login */}
-          <button 
-            onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
-            className="border border-black rounded-full px-4 py-1.5 text-sm font-medium"
-          >
-            Login
-          </button>
-        </div>
+          {/* ================= DESKTOP ================= */}
+          <div className="hidden md:flex items-center justify-between w-full px-4">
+            
+            {/* Logo */}
+            <div 
+              className="flex items-center gap-2 cursor-pointer" 
+              onClick={scrollToHome}
+            >
+              <img src={GLogo} alt="GarageSaarthi" className="h-8 2xl:h-10" />
+            </div>
 
-        {/* ================= DESKTOP ================= */}
-        <div className="hidden md:flex items-center justify-between w-full px-4">
-          
-          {/* Logo */}
-          <div 
-            className="flex items-center gap-2 cursor-pointer" 
-            onClick={scrollToHome}
-          >
-            <img src={GLogo} alt="GarageSaarthi" className="h-8 2xl:h-10" />
+            {/* Nav Links */}
+            <ul className="flex items-center gap-10">
+              {navLinks.filter(l => !l.isHome).map((link) => {
+                const isActive = active === link.name;
+                return (
+                  <li key={link.name} className="relative">
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link)}
+                      className="text-md font-medium pb-2 hover:text-[#B02E0C] transition-colors"
+                    >
+                      {link.name}
+                    </a>
+
+                    {isActive && (
+                      <span
+                        className="absolute left-0 right-0 -bottom-1 h-[5px] w-7 rounded-full"
+                        style={{
+                          background:
+                            'linear-gradient(90deg, #B02E0C 0%, #FF643C 100%)',
+                        }}
+                      />
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Buttons */}
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
+                className="text-sm font-medium border rounded-full px-4 py-2 cursor-pointer hover:bg-gray-50 transition-colors"
+              >
+                Login
+              </button>
+              <Button 
+                variant="hero" 
+                className="!px-4 !py-2 "
+                onClick={scrollToContact}
+              >
+                Get Started
+                <svg
+                    className="w-5 h-5 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+              </Button>
+            </div>
           </div>
+        </nav>
 
-          {/* Nav Links */}
-          <ul className="flex items-center gap-10">
+        {/* Mobile Menu Overlay - Positioned Below */}
+        <div 
+          className={`absolute left-0 right-0 mt-3 md:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen 
+              ? 'opacity-100 translate-y-0 visible' 
+              : 'opacity-0 -translate-y-4 invisible'
+          }`}
+        >
+          <div className="bg-white/95 backdrop-blur-md rounded-[28px] shadow-2xl border border-gray-100 p-3 flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive = active === link.name;
               return (
-                <li key={link.name} className="relative">
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link)}
-                    className="text-md font-medium pb-2"
-                  >
-                    {link.name}
-                  </a>
-
-                  {isActive && (
-                    <span
-                      className="absolute left-0 right-0 -bottom-1 h-[5px] w-7 rounded-full"
-                      style={{
-                        background:
-                          'linear-gradient(90deg, #B02E0C 0%, #FF643C 100%)',
-                      }}
-                    />
-                  )}
-                </li>
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`px-6 py-3 rounded-2xl text-base font-semibold transition-all duration-200 ${
+                    isActive 
+                      ? 'bg-[#F5EAE7] text-[#B02E0C]' 
+                      : 'text-gray-700 hover:bg-gray-50 active:scale-[0.98]'
+                  }`}
+                >
+                  {link.name}
+                </a>
               );
             })}
-          </ul>
-
-          {/* Buttons */}
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
-              className="text-sm font-medium border rounded-full px-4 py-2 cursor-pointer"
-            >
-              Login
-            </button>
-            <Button 
-              variant="hero" 
-              className="!px-4 !py-2 "
-              onClick={scrollToContact}
-            >
-              Get Started
-              <svg
-                  className="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-            </Button>
+            <div className="mt-2 pt-2 border-t border-gray-50">
+              <Button 
+                variant="hero" 
+                className="w-full !justify-center !rounded-2xl py-2 shadow-lg"
+                onClick={scrollToContact}
+              >
+                Get Started
+                <svg
+                    className="w-5 h-5 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+              </Button>
+            </div>
           </div>
         </div>
-
-      </nav>
+      </div>
     </header>
   );
 };
