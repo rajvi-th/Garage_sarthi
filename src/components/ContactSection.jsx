@@ -29,7 +29,7 @@ const ContactSection = () => {
         <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-12 px-6 md:px-12 lg:px-16">
           {/* Left Content */}
           <div className="flex-1 text-white">
-            <h2 className="text-xl md:text-2xl lg:text-[44px] font-semibold leading-tight mb-6 mt-6">
+            <h2 className="text-xl md:text-2xl lg:text-[40px] font-semibold leading-tight mb-6 mt-6">
               Ready to Simplify Your Garage
               <br className="hidden md:block" /> Management?
             </h2>

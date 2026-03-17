@@ -37,7 +37,11 @@ const SmartDashboard = () => {
             className="!px-8"
             onClick={() => {
               const contactSection = document.getElementById('contact');
-              if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+              if (contactSection) {
+                const offset = 100;
+                const top = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+              }
             }}
           >
             Book a Free Demo

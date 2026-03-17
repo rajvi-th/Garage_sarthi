@@ -22,11 +22,14 @@ const Header = () => {
   }, [location.pathname]);
 
   const scrollToSection = (sectionId, linkName) => {
+    const offset = 100; // Height of fixed header + some padding
+    
     // If we're on the home page, just scroll
     if (location.pathname === '/') {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
         setActive(linkName);
       }
     } else {
@@ -36,7 +39,8 @@ const Header = () => {
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
           setActive(linkName);
         }
       }, 100);
@@ -70,7 +74,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 2xl:px-50">
-      <nav className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-full bg-white rounded-full border border-gray-100 px-4 py-3 flex items-center justify-between">
+      <nav className="mx-auto max-w-full lg:max-w-6xl 2xl:max-w-full bg-white/80 backdrop-blur-md rounded-full border border-white/20 px-4 py-3 flex items-center justify-between shadow-lg">
 
         {/* ================= MOBILE / TABLET ================= */}
         <div className="flex items-center justify-between w-full md:hidden">

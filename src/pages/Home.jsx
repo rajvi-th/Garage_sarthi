@@ -6,6 +6,7 @@ import SmartDashboard from '../components/SmartDashboard';
 import IndustrialBenefits from '../components/IndustrialBenefits';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/common/Footer';
+import ScrollToTop from '../components/common/ScrollToTop';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

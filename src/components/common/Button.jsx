@@ -25,7 +25,7 @@ const Button = ({
 
     // 🔥 HERO GRADIENT BUTTON
     hero:
-      "px-6 py-2.5 text-base font-semibold text-white shadow-lg " +
+      "px-6 py-2.5 text-base font-medium text-white shadow-lg " +
       "bg-[linear-gradient(92.52deg,#B22F0E_2.1%,#D73D17_105.99%)] " +
       "hover:opacity-95 active:scale-[0.98] cursor-pointer",
   };

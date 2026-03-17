@@ -71,7 +71,11 @@ const DashboardFeatures = () => {
                 className="cursor-pointer"
                 onClick={() => {
                   const showcaseSection = document.getElementById('showcase');
-                  if (showcaseSection) showcaseSection.scrollIntoView({ behavior: 'smooth' });
+                  if (showcaseSection) {
+                    const offset = 100;
+                    const top = showcaseSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
                 }}
               >
                 Explore Now
