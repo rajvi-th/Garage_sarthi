@@ -10,7 +10,7 @@ const Header = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Homeeeee', href: '#home', isHome: true },
+    { name: 'Home', href: '#home', isHome: true },
     { name: 'Features', href: '#features' },
     { name: 'Showcase', href: '#showcase' },
     { name: 'Contact', href: '#contact' },
