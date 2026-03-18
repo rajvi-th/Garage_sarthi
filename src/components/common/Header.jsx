@@ -105,7 +105,7 @@ const Header = () => {
               className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-105" 
               onClick={scrollToHome}
             >
-              <img src={GLogo} alt="GarageSaarthi" className="h-8" />
+              <img src={GLogo} alt="GarageSaarthi" className="h-10" />
             </div>
 
             {/* Login Button */}

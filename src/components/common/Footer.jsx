@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-6">
           {/* Logo and About */}
           <div className="max-w-md space-y-2">
-            <img src={GLogo} alt="GarageSaarthi" className="h-10" />
+            <img src={GLogo} alt="GarageSaarthi" className="h-15" />
 
             <p className="text-[#575757] text-sm font-medium leading-relaxed">
               Simplify your garage operations with smart automation, from job
