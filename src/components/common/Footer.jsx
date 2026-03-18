@@ -42,7 +42,7 @@ const Footer = () => {
             <p className="text-sm font-medium">
               Product By{" "}
               <a 
-                href="https://techifyhouse-v2.vercel.app/" 
+                href="http://www.techifyhouse.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-[#B02E0C] font-bold hover:underline"
@@ -102,7 +102,7 @@ const Footer = () => {
           <p className="text-sm 2xl:text-sm">
             © {new Date().getFullYear()} GarageSaarthi. All rights reserved by{" "}
             <a 
-              href="https://techifyhouse-v2.vercel.app/" 
+              href="http://www.techifyhouse.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#B02E0C] font-medium hover:underline"

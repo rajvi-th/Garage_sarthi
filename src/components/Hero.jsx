@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "./common/Button";
-import HeroBg from "../assets/icons/Gimage.svg";
+import HeroBg from "../assets/optimized/Gimage_extracted_0.png";
 import DashboardImg from "../assets/icons/Gvector.svg";
 
 const Hero = () => {
@@ -43,11 +43,11 @@ const Hero = () => {
             cards and billing to parts, customers, and team tracking.
           </p>
 
-          <div className="flex flex-row max-[380px]:flex-col justify-center gap-4">
+          <div className="flex flex-row justify-center gap-4">
 
             <Button 
               variant="hero" 
-              className="ring-4 ring-white/10 !px-8 !py-2 text-[lg]"
+              className="ring-4 ring-white/10 !px-8 !py-2 text-sm min-[350px]:text-lg"
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
@@ -59,7 +59,7 @@ const Hero = () => {
             >
               Get Started
               <svg
-                className="w-5 h-5 ml-2"
+                className="w-5 h-5 ml-2 hidden min-[400px]:block"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -75,9 +75,9 @@ const Hero = () => {
 
             <button 
               onClick={() => setShowVideo(true)}
-              className="flex items-center gap-3 px-5 py-2 rounded-full bg-white text-gray-900 font-medium hover:bg-gray-100 transition shadow-lg cursor-pointer"
+              className="flex items-center gap-3 px-5 py-2 rounded-full bg-white text-gray-900 font-medium hover:bg-gray-100 transition shadow-lg cursor-pointer text-sm min-[350px]:text-lg"
             >
-              <span className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+              <span className="hidden min-[400px]:flex w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center ">
                 <svg
                   className="w-4 h-4 text-white ml-0.5"
                   fill="currentColor"

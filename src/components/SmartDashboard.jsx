@@ -1,5 +1,5 @@
 import React from 'react';
-import DemoImg from '../assets/icons/Demo.svg';
+import DemoImg from '../assets/icons/Demo.png';
 import MockupBg from '../assets/icons/Mockup dashboard 1.png'; 
 import Button from './common/Button';
 

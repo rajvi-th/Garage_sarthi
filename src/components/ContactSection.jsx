@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import GformBg from "../assets/icons/Gform.svg";
+import GformBg from "../assets/optimized/Gform_extracted_0.png";
 import BookDemoIcon from "../assets/icons/Bookd.png";
 import Button from "./common/Button";
+import DatePicker from "./common/DatePicker";
+import dayjs from "dayjs";
 
-const FORMSPREE_URL = "https://formspree.io/f/mdkwbyjr";
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL;
 
 const ContactSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [date, setDate] = useState(null);
+  const [mobile, setMobile] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
@@ -20,6 +21,9 @@ const ContactSection = () => {
     setSubmitError("");
 
     const formData = new FormData(e.target);
+    if (date) {
+      formData.set("demo_date", dayjs(date).format("YYYY-MM-DD"));
+    }
 
     try {
       const response = await fetch(FORMSPREE_URL, {
@@ -32,9 +36,8 @@ const ContactSection = () => {
         setIsModalOpen(true);
         e.target.reset();
         setEmail("");
-        setPhone("");
-        setDate("");
-        setTime("");
+        setDate(null);
+        setMobile("");
       } else {
         const data = await response.json();
         setSubmitError(
@@ -112,57 +115,26 @@ const ContactSection = () => {
             </div>
 
 
-            {/* Date & Time */}
+            {/* Date & Mobile Number */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="text-white text-xs mb-1 block">Date</label>
-                <input
-                  type="date"
+                <DatePicker
                   name="demo_date"
                   required
                   value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  min={new Date().toISOString().split("T")[0]}
-                  className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
+                  onChange={(newValue) => setDate(newValue)}
+                  minDate={new Date()}
                 />
               </div>
               <div>
-                <label className="text-white text-xs mb-1 block">Time</label>
-                <input
-                  type="time"
-                  name="demo_time"
-                  required
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
-                />
-              </div>
-            </div>
-
-            {/* Garage/Workshop Name + Phone Number */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="text-white text-xs mb-1 block">
-                  Garage/Workshop Name
-                </label>
-                <input
-                  type="text"
-                  name="garage_name"
-                  required
-                  placeholder="Garage Name"
-                  className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-white text-xs mb-1 block">
-                  Phone Number
-                </label>
+                <label className="text-white text-xs mb-1 block">Phone Number</label>
                 <input
                   type="tel"
-                  name="phone"
+                  name="mobile"
                   required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
                   onKeyDown={(e) => {
                     if (!/[0-9]/.test(e.key) && !["Backspace","Delete","Tab","ArrowLeft","ArrowRight"].includes(e.key)) {
                       e.preventDefault();
@@ -174,6 +146,20 @@ const ContactSection = () => {
                   className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
                 />
               </div>
+            </div>
+
+            {/* Garage/Workshop Name - Full Width */}
+            <div className="mb-4">
+              <label className="text-white text-xs mb-1 block">
+                Garage/Workshop Name
+              </label>
+              <input
+                type="text"
+                name="garage_name"
+                required
+                placeholder="Garage Name"
+                className="w-full rounded-xl px-4 py-3 text-sm bg-white outline-none"
+              />
             </div>
 
             <div className="mb-6">
