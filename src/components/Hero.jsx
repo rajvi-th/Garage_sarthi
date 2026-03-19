@@ -77,9 +77,9 @@ const Hero = () => {
               onClick={() => setShowVideo(true)}
               className="flex items-center gap-3 px-5 py-2 rounded-full bg-white text-gray-900 font-medium hover:bg-gray-100 transition shadow-lg cursor-pointer text-sm min-[350px]:text-lg"
             >
-              <span className="hidden min-[400px]:flex w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center ">
+              <span className="hidden min-[400px]:flex w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
                 <svg
-                  className="w-4 h-4 text-white ml-0.5"
+                  className="w-4 h-4 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
