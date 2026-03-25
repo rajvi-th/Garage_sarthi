@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Button from './Button';
-import GLogo from '../../assets/icons/Glogo.svg';
+import GLogo from '../../assets/icons/Glogo.png';
 
 const Header = () => {
   const [active, setActive] = useState('');
@@ -105,7 +105,7 @@ const Header = () => {
               className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-105" 
               onClick={scrollToHome}
             >
-              <img src={GLogo} alt="GarageSaarthi" className="h-8" />
+              <img src={GLogo} alt="GarageSaarthi" className="h-10" />
             </div>
 
             {/* Login Button */}
@@ -127,7 +127,7 @@ const Header = () => {
               className="flex items-center gap-2 cursor-pointer" 
               onClick={scrollToHome}
             >
-              <img src={GLogo} alt="GarageSaarthi" className="h-8 2xl:h-10" />
+              <img src={GLogo} alt="GarageSaarthi" className="h-10 2xl:h-15" />
             </div>
 
             {/* Nav Links */}
@@ -162,7 +162,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => window.open('https://platform.garagesaarthi.com/login', '_blank')}
-                className="text-sm font-medium border rounded-full px-4 py-2 cursor-pointer hover:bg-gray-50 transition-colors"
+                className="text-sm font-medium border border-[#1e1e1e] rounded-full px-4 py-2 cursor-pointer "
               >
                 Login
               </button>

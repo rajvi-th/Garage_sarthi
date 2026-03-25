@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-6">
           {/* Logo and About */}
           <div className="max-w-md space-y-2">
-            <img src={GLogo} alt="GarageSaarthi" className="h-10" />
+            <img src={GLogo} alt="GarageSaarthi" className="h-15" />
 
             <p className="text-[#575757] text-sm font-medium leading-relaxed">
               Simplify your garage operations with smart automation, from job
@@ -42,7 +42,7 @@ const Footer = () => {
             <p className="text-sm font-medium">
               Product By{" "}
               <a 
-                href="https://techifyhouse-v2.vercel.app/" 
+                href="http://www.techifyhouse.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-[#B02E0C] font-bold hover:underline"
@@ -102,7 +102,7 @@ const Footer = () => {
           <p className="text-sm 2xl:text-sm">
             © {new Date().getFullYear()} GarageSaarthi. All rights reserved by{" "}
             <a 
-              href="https://techifyhouse-v2.vercel.app/" 
+              href="http://www.techifyhouse.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#B02E0C] font-medium hover:underline"
