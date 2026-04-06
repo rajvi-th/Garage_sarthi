@@ -53,7 +53,7 @@ const DashboardFeatures = () => {
         <div className="max-w-7xl w-full">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-4xl font-bold text-text-dark mb-6">
-              Your entire garage. <br />
+              Your entire workshop. <br />
               One powerf
               <span className="relative">
                 ul dashboard.
@@ -66,8 +66,8 @@ const DashboardFeatures = () => {
               customers, and staff - all in one place.
             </p>
             <div className="flex justify-center">
-              <Button 
-                variant="hero" 
+              <Button
+                variant="hero"
                 className="cursor-pointer"
                 onClick={() => {
                   const showcaseSection = document.getElementById('showcase');
@@ -107,9 +107,8 @@ const DashboardFeatures = () => {
                 key={index}
                 className={`relative p-4 border border-[#EEE] 
           transition-all duration-300 hover:shadow-sm hover:-translate-y-1 cursor-pointer
-          ${
-            feature.isSpecial ? "bg-[#EFE9E7] rounded-tr-[150px]" : "bg-white"
-          }`}
+          ${feature.isSpecial ? "bg-[#EFE9E7] rounded-tr-[150px]" : "bg-white"
+                  }`}
               >
                 {/* Icon */}
                 <div className="w-12 h-12 flex items-center justify-center mb-6">
@@ -122,7 +121,8 @@ const DashboardFeatures = () => {
 
                 {/* Title */}
                 <h3 className="text-lg font-semibold mb-2">
-                  {feature.title}
+                  {feature.title.split(" ").slice(0, -1).join(" ")} <br />
+                  {feature.title.split(" ").slice(-1)}
                 </h3>
 
                 {/* Description */}

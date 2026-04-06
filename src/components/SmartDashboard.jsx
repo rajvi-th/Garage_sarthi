@@ -18,7 +18,7 @@ const SmartDashboard = () => {
       <div className="max-w-7xl mx-auto text-center">
         
         <h2 className="text-xl md:text-2xl font-bold text-text-dark mb-4">
-          Run Your Entire Garage From <br />
+          Run Your Entire Workshop From <br />
           One{' '}
           <span className="relative inline-block">
             Smart Dashboard
