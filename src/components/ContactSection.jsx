@@ -15,6 +15,7 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [submittedEmail, setSubmittedEmail] = useState("");
+  const [submittedMobile, setSubmittedMobile] = useState("");
 
   const handleBookDemo = async (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ const ContactSection = () => {
 
       if (response.ok) {
         setSubmittedEmail(email);
+        setSubmittedMobile(mobile);
         setIsModalOpen(true);
         e.target.reset();
         setEmail("");
@@ -246,7 +248,7 @@ const ContactSection = () => {
                 Your demo is successfully booked
               </h3>
               <p className="text-gray-600 text-sm md:text-md 2xl:text-xl max-w-xl 2xl:max-w-2xl leading-relaxed">
-                You will receive a response regarding your GarageSaarthi registration demo at your registered email address <span className="font-bold text-[#0F172A]">{submittedEmail}</span>
+                You will receive a response regarding your GarageSaarthi registration demo at your registered email address <span className="font-bold text-[#0F172A]">{submittedEmail}</span> or Mobile Number <span className="font-bold text-[#0F172A]">{submittedMobile}</span>
               </p>
             </div>
           </div>

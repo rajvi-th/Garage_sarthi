@@ -35,7 +35,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-white font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight mb-6">
             Your Digital Partner in <br />
-            <span className="text-white">Garage Management</span>
+            <span className="text-white">Garage & Workshop Management</span>
           </h1>
 
           <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-10">
