@@ -30,7 +30,7 @@ const Hero = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[600px] flex flex-col items-center justify-center px-4 
-      pt-24 md:pt-32 lg:pt-40 xl:pt-48  
+      pt-35 md:pt-40 lg:pt-40 xl:pt-48  
       pb-32 md:pb-40 lg:pb-48 xl:pb-56 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-white font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight mb-6">
@@ -43,11 +43,11 @@ const Hero = () => {
             cards and billing to parts, customers, and team tracking.
           </p>
 
-          <div className="flex flex-row justify-center gap-4">
+          <div className="flex flex-col min-[430px]:flex-row  justify-center gap-4 w-fit mx-auto">
 
             <Button 
               variant="hero" 
-              className="ring-4 ring-white/10 !px-8 !py-2 text-sm min-[350px]:text-lg"
+              className="ring-4 ring-white/10 !px-8 !py-2 text-lg min-[350px]:text-lg"
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
@@ -59,7 +59,7 @@ const Hero = () => {
             >
               Get Started
               <svg
-                className="w-5 h-5 ml-2 hidden min-[400px]:block"
+                className="w-5 h-5 ml-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -77,7 +77,7 @@ const Hero = () => {
               onClick={() => setShowVideo(true)}
               className="flex items-center gap-3 px-5 py-2 rounded-full bg-white text-gray-900 font-medium hover:bg-gray-100 transition shadow-lg cursor-pointer text-sm min-[350px]:text-lg"
             >
-              <span className="hidden min-[400px]:flex w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+              <span className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"

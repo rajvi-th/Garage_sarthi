@@ -80,7 +80,7 @@ const Header = () => {
         <nav className="bg-white/80 backdrop-blur-md rounded-full border border-white/20 px-4 py-3 flex items-center justify-between shadow-lg transition-all duration-300 overflow-hidden relative z-10">
           
           {/* ================= MOBILE / TABLET ================= */}
-          <div className="flex items-center justify-between w-full md:hidden">
+          <div className="flex items-center justify-between w-full lg:hidden">
             
             {/* Hamburger / Close Icon */}
             <button 
@@ -120,7 +120,7 @@ const Header = () => {
           </div>
 
           {/* ================= DESKTOP ================= */}
-          <div className="hidden md:flex items-center justify-between w-full px-4">
+          <div className="hidden lg:flex items-center justify-between w-full px-4">
             
             {/* Logo */}
             <div 
@@ -192,7 +192,7 @@ const Header = () => {
 
         {/* Mobile Menu Overlay - Positioned Below */}
         <div 
-          className={`absolute left-0 right-0 mt-3 md:hidden transition-all duration-300 ease-in-out ${
+          className={`absolute left-0 right-0 mt-3 lg:hidden transition-all duration-300 ease-in-out ${
             isMenuOpen 
               ? 'opacity-100 translate-y-0 visible' 
               : 'opacity-0 -translate-y-4 invisible'
@@ -219,7 +219,7 @@ const Header = () => {
             <div className="mt-2 pt-2 border-t border-gray-50">
               <Button 
                 variant="hero" 
-                className="w-full !justify-center !rounded-2xl py-2 shadow-lg"
+                className="w-fit !justify-center !rounded-2xl py-2 shadow-lg"
                 onClick={scrollToContact}
               >
                 Get Started
