@@ -86,6 +86,45 @@
 
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- UTM Transfer Script -->
+  <script>
+    window.addEventListener('load', function() {
+      // 1. URL maathen addana parameters (UTM) shodho
+      const urlParams = new URLSearchParams(window.location.search);
+      const utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      let utmQueryString = "";
+
+      utms.forEach(utm => {
+        const value = urlParams.get(utm);
+        if(value) {
+          utmQueryString += (utmQueryString ? "&" : "") + utm + "=" + encodeURIComponent(value);
+        }
+      });
+  
+      // 2. jo UTM data male, to badhi "Login" ane "Sign Up" linksmama tene jodi do
+      if(utmQueryString) {
+        // Anchor tags handle karo
+        const appLinks = document.querySelectorAll('a[href*="platform.garagesaarthi.com"]');
+        appLinks.forEach(link => {
+          const originalHref = link.href;
+          const separator = originalHref.includes('?') ? '&' : '?';
+          // linkne update karo: platform.garagesaarthi.com/login?utm_source=meta...
+          link.href = originalHref + separator + utmQueryString;
+        });
+
+        // window.open() calls handle karo
+        const originalWindowOpen = window.open;
+        window.open = function(url, target, features) {
+          if(url && url.includes('platform.garagesaarthi.com')) {
+            const separator = url.includes('?') ? '&' : '?';
+            url = url + separator + utmQueryString;
+          }
+          return originalWindowOpen.call(this, url, target, features);
+        };
+      }
+    });
+  </script>
 </body>
 
 </html>
