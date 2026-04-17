@@ -14,6 +14,7 @@ const Header = () => {
     { name: 'Home', href: '#home', isHome: true },
     { name: 'Features', href: '#features' },
     { name: 'Showcase', href: '#showcase' },
+    { name: 'Download App', href: '#download-app' },
     { name: 'Contact', href: '#contact' },
   ];
 

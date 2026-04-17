@@ -7,6 +7,7 @@ import PlayStoreIcon from '../assets/icons/Playstore.png';
 const AppPromotion = () => {
   return (
     <section 
+      id="download-app"
       className="relative w-full py-10 md:py-16 2xl:py-20 px-6 md:px-12 lg:px-20 2xl:px-50 overflow-hidden bg-[#EFE9E7]"
     >
       {/* Background Image Overlay */}

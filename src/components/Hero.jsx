@@ -49,7 +49,7 @@ const Hero = () => {
 
             <Button 
               variant="hero" 
-              className="ring-4 ring-white/10 !px-8 !py-2 text-lg min-[350px]:text-lg"
+              className=" !px-8 !py-2 text-lg min-[350px]:text-lg pulse-border-effect"
               onClick={() => {
                 trackEvent('Lead');
                 window.open('https://platform.garagesaarthi.com/signup', '_blank');

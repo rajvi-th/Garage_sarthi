@@ -35,3 +35,31 @@ html {
 body {
   font-family: "Satoshi", sans-serif;
 }
+
+.pulse-border-effect {
+  position: relative;
+}
+
+.pulse-border-effect::before,
+.pulse-border-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: spread-shadow 2.5s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pulse-border-effect::after {
+  animation-delay: 1.25s;
+}
+
+@keyframes spread-shadow {
+  0% {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 25px rgba(255, 255, 255, 0);
+  }
+}
