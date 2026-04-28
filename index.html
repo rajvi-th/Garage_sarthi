@@ -87,26 +87,26 @@
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 
-  <!-- UTM Transfer Script (Updated & Dynamic) -->
+
   <script>
-    window.addEventListener('load', function() {
-      // 1. URL માંથી બધા જ પેરામીટર્સ લો
+    window.addEventListener('load', function () {
+
       const urlParams = new URLSearchParams(window.location.search);
       let utmQueryString = "";
-      // ડાયનેમિક રીતે utm_ થી શરૂ થતા બધા જ પેરામીટર્સ શોધો
+
       urlParams.forEach((value, key) => {
         if (key.toLowerCase().startsWith('utm_') || key.toLowerCase().includes('clid')) {
           utmQueryString += (utmQueryString ? "&" : "") + key + "=" + encodeURIComponent(value);
         }
       });
-      // 2. જો ડેટા મળે, તો પ્લેટફોર્મના બટન્સમાં જોડી દો
-      if(utmQueryString) {
-        // બધી લિંક્સ (Login / Signup) શોધો
+
+      if (utmQueryString) {
+
         const appLinks = document.querySelectorAll('a[href*="platform.garagesaarthi.com"]');
         appLinks.forEach(link => {
           try {
             const url = new URL(link.href);
-            // નવા પેરામીટર્સ એડ કરો
+
             const newParams = new URLSearchParams(utmQueryString);
             newParams.forEach((value, key) => {
               url.searchParams.set(key, value);
@@ -116,10 +116,10 @@
             console.error("Link update error:", e);
           }
         });
-        // window.open() ને પણ હેન્ડલ કરો (જો કોઈ બટન ડાયરેક્ટ ઓપન જતું હોય તો)
+        // window.open()
         const originalWindowOpen = window.open;
-        window.open = function(url, target, features) {
-          if(url && url.includes('platform.garagesaarthi.com')) {
+        window.open = function (url, target, features) {
+          if (url && url.includes('platform.garagesaarthi.com')) {
             try {
               const newUrl = new URL(url.startsWith('http') ? url : window.location.origin + url);
               const newParams = new URLSearchParams(utmQueryString);
@@ -127,7 +127,7 @@
                 newUrl.searchParams.set(key, value);
               });
               url = newUrl.toString();
-            } catch (e) {}
+            } catch (e) { }
           }
           return originalWindowOpen.call(this, url, target, features);
         };
