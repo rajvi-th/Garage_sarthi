@@ -116,7 +116,7 @@ export default function PricingAccordionFeatures({ className }) {
           Everything You Get with{" "}
           <span className="relative inline-block">
             GarageSaarthi
-            <span className="absolute left-0 -bottom-1 w-full h-[4px] bg-[#B02E0C] rounded-full"></span>
+            <span className="absolute left-0 -bottom-1 w-full h-[4px] bg-gradient-to-r from-orange-500 to-red-600 rounded-full"></span>
           </span>
         </h2>
         <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-[#EFE9E7] shadow-sm">

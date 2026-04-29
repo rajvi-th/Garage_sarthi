@@ -46,7 +46,7 @@ export default function PricingComparisonTable({ plans }) {
           Pricing{" "}
           <span className="relative inline-block">
             Comparison
-            <span className="absolute left-0 -bottom-1 w-full h-[4px] bg-[#B02E0C] rounded-full"></span>
+            <span className="absolute left-0 -bottom-1 w-full h-[4px] bg-gradient-to-r from-orange-500 to-red-600 rounded-full"></span>
           </span>
         </h2>
         <p className="text-slate-500 max-w-2xl mx-auto">

@@ -11,7 +11,7 @@ export default function PricingWalletTopup({ creditPlans, handleBuyNow }) {
           Add-on{" "}
           <span className="relative inline-block">
             Packs
-            <div className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#B02E0C] rounded-full" />
+            <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-gradient-to-r from-orange-500 to-red-600 rounded-full" />
           </span>
         </h2>
         <p className="text-slate-500">
