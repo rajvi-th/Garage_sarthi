@@ -57,10 +57,6 @@ export default function PricingPage() {
     return [plans[(idx - 1 + total) % total], plans[idx], plans[(idx + 1) % total]];
   }, [plans, selectedPlanId]);
 
-  const handleBuyNow = () => window.open(`${import.meta.env.VITE_FRONTEND_URL}/pricing`, '_blank');
-
-  if (isLoading) return null;
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -74,13 +70,12 @@ export default function PricingPage() {
             setSelectedPlanId={setSelectedPlanId} 
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center container mx-auto px-4">
             {displayPlans.map((plan) => (
               <PricingCard 
                 key={plan._id} 
                 plan={plan} 
                 isTarget={plan._id === selectedPlanId} 
-                handleBuyNow={handleBuyNow} 
                 onContactUs={() => setIsModalOpen(true)}
               />
             ))}
@@ -88,7 +83,6 @@ export default function PricingPage() {
 
           <PricingWalletTopup 
             creditPlans={creditPlans} 
-            handleBuyNow={handleBuyNow} 
           />
 
           <PricingComparisonTable plans={plans} />
