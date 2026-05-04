@@ -83,13 +83,13 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="flex flex-col gap-4 md:mt-10">
-            <a href="tel:+917574045266" className="flex items-center gap-2">
+            <a href="tel:+917574045260" className="flex items-center gap-2">
               <img
                 src={CallIcon}
                 alt="Call"
                 className="w-4 h-4 -translate-y-px"
               />
-              <span className="font-medium">+91 7574045266</span>
+              <span className="font-medium">+91 7574045260</span>
             </a>
 
             <a
