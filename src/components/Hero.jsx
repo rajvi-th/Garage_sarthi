@@ -36,7 +36,7 @@ const Hero = () => {
       pb-32 md:pb-40 lg:pb-48 xl:pb-56 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-white font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight mb-6">
-            Your Digital Partner in <br />
+            You Digital Partner in <br />
             <span className="text-white">Garage & Workshop Management</span>
           </h1>
 
