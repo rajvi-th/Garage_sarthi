@@ -19,7 +19,9 @@ jobs:
           port: 22
           script: |
             cd /var/www/garage/garage-landing
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/main
+            git clean -fd
             npm install
             npm run build
             sudo systemctl reload nginx
