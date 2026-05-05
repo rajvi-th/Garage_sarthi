@@ -89,7 +89,7 @@ const Footer = () => {
                 alt="Call"
                 className="w-4 h-4 -translate-y-px"
               />
-              <span className="font-medium">+91 7574045260</span>
+              <span className="font-medium">+91 7574045260  </span>
             </a>
 
             <a
